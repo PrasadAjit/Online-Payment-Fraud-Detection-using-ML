@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Payment Fraud Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 450px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+
+        input[type="number"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    
+    <form action="/predict" method="post">
+        
+        <h1>Online Payment Fraud Detection</h1>
+
+        <label for="step">Step:</label>
+        <input type="number" id="step" name="step" required>
+
+        <label for="typeup">Type:</label>
+        <input type="number" id="typeup" name="typeup" required>
+
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" step="0.01" required>
+
+        <label for="nameOrig">Name of Originator:</label>
+        <input type="number" id="nameOrig" name="nameOrig" required>
+
+        <label for="oldbalanceOrg">Old Balance:</label>
+        <input type="number" id="oldbalanceOrg" name="oldbalanceOrg" step="0.01" required>
+
+        <label for="newbalanceOrig">New Balance:</label>
+        <input type="number" id="newbalanceOrig" name="newbalanceOrig" step="0.01" required>
+
+        <label for="nameDest">Name of Destination:</label>
+        <input type="number" id="nameDest" name="nameDest" required>
+
+        <label for="oldbalanceDest">Old Balance of Destination:</label>
+        <input type="number" id="oldbalanceDest" name="oldbalanceDest" step="0.01" required>
+
+        <label for="newbalanceDest">New Balance of Destination:</label>
+        <input type="number" id="newbalanceDest" name="newbalanceDest" step="0.01" required>
+
+        <label for="isFlaggedFraud">Flagged as Fraud (1 for yes, 0 for no):</label>
+        <input type="number" id="isFlaggedFraud" name="isFlaggedFraud" required>
+
+        <input type="submit" value="Predict">
+        
+        {% if prediction_text %}
+        <h2>{{ prediction_text }}</h2>
+        {% endif %}
+    </form>
+</body>
+</html>
